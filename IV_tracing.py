@@ -16,7 +16,7 @@ base = "/home/pi/tracing_data/"
 os.makedirs(base,exist_ok = True)
 
 rm = pyvisa.ResourceManager()
-resources = rm.list_resources()
+resources = rm.list_resources() # por defecto pasa '?*::INSTR'
 print(resources)
 
 for i in range(len(resources)):
