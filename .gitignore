@@ -1,1 +1,4 @@
+# Cache de CPython
 __pycache__/
+# Script obtenido de internet solo para configuracion inicial
+udev-install-usbusers.sh
