@@ -1,9 +1,9 @@
 import controller_IV_reads
-import pyvisa
+import pyvisa #protocolos comunicación.
 import time 
 from datetime import datetime
 import os
-import pandas as pd
+import pandas as pd #analisis de datos
 #from controller_IV_reads import Carga
 #from controller_IV_reads import Fuente
 ##########################Buscar carga##################################
@@ -11,7 +11,7 @@ import pandas as pd
 
 #Crear archivo csv
 outputCSV = pd.DataFrame(columns = ["Timestamp", "Time", "Voltage", "Current"])
-file_date = datetime.now().strftime("%d_%m_%Y_%H_%M")
+file_date = datetime.now().strftime("_%d_%m_%Y_%H_%M")
 base = "/home/pi/tracing_data/"
 os.makedirs(base,exist_ok = True)
 
@@ -47,7 +47,8 @@ while vset < 23:
     tiempo_actual = datetime.now()
     deltat = (tiempo_actual - past_time).total_seconds()
     seconds += deltat
-    outputCSV = outputCSV.append({"Timestamp":tiempo_actual,"Time":round(seconds,2), "Voltage":volt, "Current":current}, ignore_index=True)
+    measuredf = pd.DataFrame({"Timestamp":tiempo_actual,"Time":round(seconds,2), "Voltage":volt, "Current":current},index=[0])
+    outputCSV = pd.concat([outputCSV, measuredf], ignore_index=True)
     filename = base + "tracing_data" + file_date + ".csv"
     outputCSV.iloc[-1:].to_csv(filename, index=False, mode='a', header=False) #Create csv for tracing
     past_time = tiempo_actual
