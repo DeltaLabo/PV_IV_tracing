@@ -41,7 +41,9 @@ sudo bash udev-install-usbusers.sh
 ```
 
 ## Actualizar controller
-Este proceso es necesario, para llamar un archivo más reciente desde otro repositorio el cual es privado. **Se requiere tener los permisos configurados en la terminal.**
+Este proceso es necesario, para llamar un archivo más reciente desde otro repositorio el cual es privado. 
+
+**Se requiere tener los permisos configurados en la terminal.**
 
 Se realiza ejecutando en terminal
 
